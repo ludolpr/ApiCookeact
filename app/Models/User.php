@@ -22,10 +22,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function recipes()
-    {
-        return $this->belongsToMany(Recipe::class, 'build')->withTimestamps();
-    }
     /**
      * The attributes that should be hidden for serialization.
      *
