@@ -21,7 +21,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    public function sector()
+    {
+        return $this->hasMany(User::class); // 1-n
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -43,9 +46,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-    public function recipes()
-    {
-        return $this->hasMany(Recipe::class);
     }
 }

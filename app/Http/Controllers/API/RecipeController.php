@@ -23,12 +23,12 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+
         // Valide les données de la requête
         $request->validate([
-            'name_recipe' => 'required|max:50',
-            'id' => "require|integer",
-            'description' => 'required|max:500',
-            'picture' => 'required|image|max:1024', // Assure que le fichier est une image et ne dépasse pas 1MB
+            'name_recipe' => 'required|max:50', 'id' => "required|integer",
+            'description' => 'required|max:500', 'picture' => 'required|image|max:5024', // Assure que le fichier est une image et ne dépasse pas 1MB
         ]);
 
         // Traite l'upload de l'image
@@ -71,10 +71,9 @@ class RecipeController extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         // Valide les données de la requête
-        $request->validate([
-            'name_recipe' => 'required|max:50',
-            'description' => 'required|max:500',
-            'picture' => 'image|max:1024', // Assure que le fichier est une image et ne dépasse pas 1MB
+        $request->validate(['name_recipe' => 'required|max:50', 'description' => 'required|max:500', 'picture' => 'image|max:1024',
+            'id' => "required|integer"
+             // Assure que le fichier est une image et ne dépasse pas 1MB
         ]);
 
         // Traite l'upload de l'image si elle est présente
@@ -100,6 +99,7 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+        // dd($recipe);
         // Supprime une recette
         $recipe->delete();
 
